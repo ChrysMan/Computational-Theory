@@ -1,0 +1,83 @@
+--Kappa file for demonstration of the compiler
+--This is a Kappa code without declarations before main
+
+def main():
+	k:str;
+	a, b, d = 4200.0e-3: scalar;
+	c[2]: scalar;
+	q[]: boolean;
+	k = "Route 66";
+	g, s, t: integer;
+	a = 42.3;
+	b = 4.2e1;
+	const p: boolean;
+	const v = -0.2 : scalar;
+	const f[3], l = 3 : integer;
+
+	c[1] = 0.402E+2;
+	q[0] = True;
+	
+	if (q[0] == True):
+		g = a - b;
+		a += 2;
+		s = -b;
+		t = g % s;
+		return s;
+	endif;
+
+	if((q[0] == False) and a >= (42.3/2) ):
+		if(a == 42.3/2):
+			t = readInteger();
+			g = t + 2 - 5 * 10;
+			return g;
+		else:
+			q[0]=False;
+			break;
+		endif;
+	endif;
+	
+	
+	while ((not q[0]) or (a != b**2) ):
+		b = readInteger();
+		a = c[(b+1)/2];
+		
+		if (q[0] == True):
+			q[b-1] = not q[0];
+			q[0] = q[(b % 2)*3];
+		endif;
+	endwhile;
+	
+	i, j : integer;
+
+	for i in [0:3]:
+		if (i > 2 or (i <= 1  and (i != 0))):
+			writeInteger(i);
+		else:
+			continue;
+		endif;
+	endfor;
+
+	for i  in [0:20:2]:
+		writeStr(" ");
+		writeStr(k);
+	endfor;
+
+	for i in [10:0:-5]:
+		j=i;
+		for j in [j:50:1]:
+			writeStr("hello!");
+		endfor;
+	endfor;
+	
+	for i in [20:0:-1]:
+		j = 1;
+	endfor;
+	
+--dummy comment
+	r = readInteger();
+	for i in [r+50:0:-1]:
+		array := [i+1 for i:100]:integer;
+		array2 := [(x+1) % 2.0 for x:integer in array of 100]:scalar;
+	endfor;  
+
+enddef;

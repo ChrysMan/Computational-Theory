@@ -1,0 +1,128 @@
+--Kappa file for demonstration of the compiler
+--This is a Kappa code with declarations before main
+
+const days = 28: integer;
+
+comp Employee:
+	#name: str;
+	#age: integer;
+	#height: scalar;
+	#hoursPerDay, #moneyPerHour: scalar;
+
+	def setPerson(n: str, a: integer, h: scalar, hpd: scalar, mph: scalar):
+		#name=n;
+		#age=a;
+		#height=h;
+		#hoursPerDay=hpd;
+		#moneyPerHour=mph;
+	enddef;
+
+	def computeSalary() -> scalar:
+		return #hoursPerDay * #moneyPerHour * days;
+	enddef;
+
+endcomp;
+
+comp Business:
+	#name: str;
+	#phone, #numOfEmployees: integer;
+	#salaries: scalar;
+	#employee[10]: Employee;
+	#dfsfvg: integer;
+
+	def computeSalaries() -> scalar:
+		sal:scalar;
+		i=0:integer;
+		for i in [0:#numOfEmployees]:
+			sal += #employee[i].computeSalary();
+		endfor;	
+		write("Total Salaries for the month: %s", #salaries);
+		return sal;
+	enddef;
+
+	def setBusiness(n:str, phone:integer, num:integer, empl[]:Employee):
+		#name = n;
+		#phone = phone;
+		j=0:integer;
+		for j in [0:#numOfEmployees]
+			#employee[j]: Employee;
+		#salaries = printSalaries();
+
+	enddef;
+endcomp;
+
+comp Useless:
+	#business[2]: Business;
+	#Emp[]: Employee;
+
+	def Useless(h1: scalar, h2: scalar)->scalar:
+		a: scalar
+		#business[1].#Emp[5].#height =  h1;
+		#business[2].#Emp[4].#height =  h2;
+
+		a = a + #Emp[2].computeSalary() * #business[1].#Emp[5].#height / h2;
+		return a;
+	enddef; 
+
+def createEmployee(n: str, a: integer, h: scalar, hpd: scalar, mph: scalar, o:integer)->Employee:
+	empl:Employee;
+	
+	empl.setPerson(n, a, h, hpd, mph);
+	empl.#dfsfvg = o;
+
+	return Employee;
+enddef;
+
+n: str;
+phone_, n2, n3=0, hpd, mph: integer;
+test: boolean;
+grades[5], h: scalar;
+names[4]: str;
+w, z, g: Business;
+E1, E2: Employee;
+ 
+const pi = 3.14152: scalar;
+
+
+def createBusiness(name: str, phone: integer, numOfEmployees: integer, employee[10]: Employee, dfsfvg: integer)
+	bus: Business;
+
+	bus.setBusiness(name, phone, numOfEmployees, employee[10]:Employee, dfsfvg);
+enddef;
+
+def main():
+	n = "Manousos";
+	a = 25: integer;
+	h = 1.87;
+	hpd = 8.5;
+	mph = 10.0;
+	o = 23;
+
+	E1 = createEmployee(n,a,h,hpd,mph,o);
+	
+	E1.computeSalary();
+
+	names[1] = "Market";
+	phone_=6939458939;
+	n2 = 10;
+	E[n2]: Employee;
+
+	for i in [0:n2]:
+		E[i]=createEmployee(n,a,h,hpd,mph,o);
+	endfor;
+		
+	w = createBusiness(names[1], phone_, n2, E[], n3);
+	w.employee[2].computeSalary();
+
+	num = w.employee[n2].age : integer;
+
+	a := [i for i:(E1.age + 2)]:integer;
+	
+	w.employee[n2-2].height = a;
+
+	k := [w.employee[x % 2].age for x:integer in array of n2]:scalar; 
+
+	write("Byeee! %s", w.employee[n2+4%3].name);
+
+	
+enddef;
